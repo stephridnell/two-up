@@ -9,77 +9,78 @@ public class SimplePlayer implements Player {
 	
 	private String id;
 	private String name;
-	private int credits;
+	private int bet;
+	private Face facePick;
+	private int points;
+	private GameStatus result = GameStatus.DREW;
 
 	public SimplePlayer(String id, String name, int defaultCreditPoints) {
 		this.id = id;
 		this.name = name;
-		this.credits = defaultCreditPoints;
+		this.points = defaultCreditPoints;
 	}
 
 	@Override
 	public int getBet() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.bet;
 	}
 
 	@Override
 	public Face getFacePick() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.facePick;
 	}
 
 	@Override
 	public String getPlayerId() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.id;
 	}
 
 	@Override
 	public String getPlayerName() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	@Override
 	public int getPoints() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.points;
 	}
 
 	@Override
 	public GameStatus getResult() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.result;
 	}
 
 	@Override
 	public void placeBet(Face facePick, int bet) throws InsufficientFundsException {
-		// TODO Auto-generated method stub
+		if (bet > this.points) {
+			throw new InsufficientFundsException();
+		}
+		this.facePick = facePick;
+		this.bet = bet;
 
 	}
 
 	@Override
 	public void setPlayerId(String playerId) {
-		// TODO Auto-generated method stub
+		this.id = playerId;
 
 	}
 
 	@Override
 	public void setPlayerName(String playerName) {
-		// TODO Auto-generated method stub
+		this.name = playerName;
 
 	}
 
 	@Override
 	public void setPoints(int points) {
-		// TODO Auto-generated method stub
+		this.points = points;
 
 	}
 
 	@Override
 	public void setResult(GameStatus status) {
-		// TODO Auto-generated method stub
+		this.result = status;
 
 	}
 

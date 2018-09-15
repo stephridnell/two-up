@@ -1,6 +1,9 @@
 package au.edu.rmit.cpt222.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import au.edu.rmit.cpt222.model.exceptions.InsufficientFundsException;
 import au.edu.rmit.cpt222.model.interfaces.Coin.Face;
@@ -9,6 +12,8 @@ import au.edu.rmit.cpt222.model.interfaces.GameEngineCallback;
 import au.edu.rmit.cpt222.model.interfaces.Player;
 
 public class GameEngineImpl implements GameEngine {
+	
+	private List<Player> players = new ArrayList<Player>();
 
 	@Override
 	public void addGameEngineCallback(GameEngineCallback gameEngineCallback) {
@@ -18,7 +23,7 @@ public class GameEngineImpl implements GameEngine {
 
 	@Override
 	public void addPlayer(Player player) {
-		// TODO Auto-generated method stub
+		players.add(player);
 
 	}
 
@@ -36,14 +41,20 @@ public class GameEngineImpl implements GameEngine {
 
 	@Override
 	public Collection<Player> getAllPlayers() {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.unmodifiableList(this.players);
 	}
 
 	@Override
 	public Player getPlayer(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		int indexToRemove = 0;
+
+		for(int i = 0; i < this.players.size(); i++) {
+		    if (this.players.get(i).getPlayerId().equals(id)) {
+		        indexToRemove = i;
+		    }
+		}
+		
+		return this.players.get(indexToRemove);
 	}
 
 	@Override
