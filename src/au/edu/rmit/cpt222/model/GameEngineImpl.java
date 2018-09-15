@@ -65,7 +65,11 @@ public class GameEngineImpl implements GameEngine {
 
 	@Override
 	public void placeBet(Player player, Face face, int bet) throws InsufficientFundsException {
-		// TODO Auto-generated method stub
+		try {
+			player.placeBet(face, bet);
+		} catch (InsufficientFundsException ife) {
+			throw ife;
+		}
 
 	}
 
@@ -82,7 +86,7 @@ public class GameEngineImpl implements GameEngine {
 
 	@Override
 	public void setPlayerPoints(Player player, int totalPoints) {
-		// TODO Auto-generated method stub
+		player.setPoints(totalPoints);
 
 	}
 
