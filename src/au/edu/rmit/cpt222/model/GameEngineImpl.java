@@ -49,8 +49,8 @@ public class GameEngineImpl implements GameEngine {
 		int indexToRemove = 0;
 		boolean found = false;
 
-		for(int i = 0; i < this.players.size(); i++) {
-		    if (this.players.get(i).getPlayerId().equals(id)) {
+		for(int i = 0; i < players.size(); i++) {
+		    if (players.get(i).getPlayerId().equals(id)) {
 		    	found = true;
 		        indexToRemove = i;
 		    }
@@ -60,7 +60,7 @@ public class GameEngineImpl implements GameEngine {
 			return null;
 		}
 		
-		return this.players.get(indexToRemove);
+		return players.get(indexToRemove);
 	}
 
 	@Override

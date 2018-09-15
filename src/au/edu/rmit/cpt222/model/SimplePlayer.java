@@ -22,37 +22,37 @@ public class SimplePlayer implements Player {
 
 	@Override
 	public int getBet() {
-		return this.bet;
+		return bet;
 	}
 
 	@Override
 	public Face getFacePick() {
-		return this.facePick;
+		return facePick;
 	}
 
 	@Override
 	public String getPlayerId() {
-		return this.id;
+		return id;
 	}
 
 	@Override
 	public String getPlayerName() {
-		return this.name;
+		return name;
 	}
 
 	@Override
 	public int getPoints() {
-		return this.points;
+		return points;
 	}
 
 	@Override
 	public GameStatus getResult() {
-		return this.result;
+		return result;
 	}
 
 	@Override
 	public void placeBet(Face facePick, int bet) throws InsufficientFundsException {
-		if (bet > this.points) {
+		if (bet > points) {
 			throw new InsufficientFundsException();
 		}
 		this.facePick = facePick;
@@ -82,6 +82,13 @@ public class SimplePlayer implements Player {
 	public void setResult(GameStatus status) {
 		this.result = status;
 
+	}
+	
+	@Override
+	public String toString() {
+		return "INFO: Player: id = " + id + ", name = " + name +
+				", bet amount = " + bet + ", selected coin face = " + facePick +
+				", game result = " + result + ", total points = " + points;
 	}
 
 }
