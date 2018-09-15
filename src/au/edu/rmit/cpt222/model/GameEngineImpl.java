@@ -77,8 +77,7 @@ public class GameEngineImpl implements GameEngine {
 
 	@Override
 	public boolean removePlayer(Player player) {
-		// TODO Auto-generated method stub
-		return false;
+		return players.remove(player);
 	}
 
 	@Override
