@@ -47,11 +47,17 @@ public class GameEngineImpl implements GameEngine {
 	@Override
 	public Player getPlayer(String id) {
 		int indexToRemove = 0;
+		boolean found = false;
 
 		for(int i = 0; i < this.players.size(); i++) {
 		    if (this.players.get(i).getPlayerId().equals(id)) {
+		    	found = true;
 		        indexToRemove = i;
 		    }
+		}
+		
+		if (!found) {
+			return null;
 		}
 		
 		return this.players.get(indexToRemove);
