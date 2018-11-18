@@ -10,20 +10,18 @@ public class GameEngineCallbackImpl implements GameEngineCallback {
 
 	@Override
 	public void coinFlip(Face coinFace, GameEngine engine) {
-		// TODO Auto-generated method stub
+		System.out.println(coinFace.toString());
 
 	}
 
 	@Override
 	public void coinFlipOutcome(Face coinFace, GameEngine engine) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Coin landed on: " + coinFace.toString());
 	}
 
 	@Override
 	public void gameResult(Player player, GameStatus result, GameEngine engine) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Player: " + player.getPlayerName() + ", Game Result: " + result.toString());
 	}
 
 }

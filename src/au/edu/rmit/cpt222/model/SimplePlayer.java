@@ -1,5 +1,7 @@
 package au.edu.rmit.cpt222.model;
 
+import java.util.UUID;
+
 import au.edu.rmit.cpt222.model.exceptions.InsufficientFundsException;
 import au.edu.rmit.cpt222.model.interfaces.Coin.Face;
 import au.edu.rmit.cpt222.model.interfaces.GameEngine.GameStatus;
@@ -18,6 +20,12 @@ public class SimplePlayer implements Player {
 		this.id = id;
 		this.name = name;
 		this.points = defaultCreditPoints;
+	}
+	
+	public SimplePlayer(String name, int defaultCreditPoints) {
+		this.name = name;
+		this.points = defaultCreditPoints;
+		this.id = UUID.randomUUID().toString();
 	}
 
 	@Override
@@ -52,6 +60,9 @@ public class SimplePlayer implements Player {
 
 	@Override
 	public void placeBet(Face facePick, int bet) throws InsufficientFundsException {
+		if (bet < 0 || facePick == null) {
+			throw new IllegalArgumentException();
+		}
 		if (bet > points) {
 			throw new InsufficientFundsException();
 		}
